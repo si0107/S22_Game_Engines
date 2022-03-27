@@ -11,7 +11,10 @@ namespace Pigu
 	{
 	public:
 		void Run();
-		virtual void OnUpdate(); 
+		virtual void OnUpdate();
+
+	private:
+
 	};
 
 }

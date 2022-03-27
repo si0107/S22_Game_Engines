@@ -1,0 +1,57 @@
+#include "pch.h"
+#include "GWindow.h"
+#include "specificGLFW/GlfwWindow.h"
+
+namespace Pigu
+{
+	void GWindow::Init()
+	{
+		if(mInstance == nullptr)
+			mInstance = new GWindow;
+	}
+
+	GWindow* GWindow::GetWindow()
+	{
+		assert(mInstance);
+		return mInstance;
+	}
+
+	bool GWindow::CreateWindow(int width, int height, const std::string& windowName)
+	{
+		return mWindow->CreateWindow(800, 600, "Game Project 22");
+	}
+
+	void GWindow::SwapBuffers()
+	{
+		mWindow->SwapBuffers();
+	}
+
+	void GWindow::CollectEvents()
+	{
+		mWindow->CollectEvents();
+	}
+
+	int GWindow::GetWidth() const
+	{
+		return mWindow->GetWidth();
+	}
+
+	int GWindow::GetHeight() const
+	{
+		return mWindow->GetHeight();
+	}
+
+	GWindow::GWindow()
+	{
+#ifdef PIGU_WINDOWS
+	mWindow = new GlfwWindow;
+#elif defined PIGU_MACOS
+	mWindow = new GlfwWindow;
+#elif defined PIGU_LINUX
+	mWindow = new GlfwWindow;
+#else
+	#Unsupported_platform
+#endif
+	}
+
+}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PiguApp.h"
+#include "GWindow.h"
 
 
 //MACRO for creating a method to run the gameClass we supply it
