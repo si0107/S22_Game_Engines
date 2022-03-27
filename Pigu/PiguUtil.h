@@ -2,11 +2,17 @@
 
 #include "pch.h"
 
-#ifdef PIGU_LIB
-	#define PIGU_API __declspec(dllexport)
+#ifdef PIGU_WINDOWS
+	#ifdef PIGU_LIB
+		#define PIGU_API __declspec(dllexport)
+	#else
+		#define PIGU_API __declspec(dllimport)
+	#endif
 #else
-	#define PIGU_API __declspec(dllimport)
+	#define PIGU_API
 #endif
+
+
 
 #ifdef PIGU_DEBUG
 	#define PIGU_LOG(x) std::cout<<x<<std::endl;

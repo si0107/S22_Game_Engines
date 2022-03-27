@@ -1,10 +1,11 @@
 #pragma once
 
 #include "WindowImplement.h"
+#include "PiguUtil.h"
 
 namespace Pigu
 {
-	class GWindow
+	class PIGU_API GWindow
 	{
 	public:
 		//static objects make it not attached to any instance of this class
