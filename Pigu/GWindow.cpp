@@ -1,6 +1,8 @@
 #include "pchPigu.h"
 #include "GWindow.h"
-#include "specificGLFW/PiguGlfwWindow.h"
+//#include "specificGLFW/PiguGlfwWindow.h"
+
+#include "piguGLFW/PiguGlfwWindow.h"
 
 namespace Pigu
 {

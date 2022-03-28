@@ -4,13 +4,13 @@ set(HEADER_FILES
 	PiguUtil.h
 	GWindow.h
 	WindowImplement.h
-	specificGLFW/PiguGlfwWindow.h
+	piguGLFW/PiguGlfwWindow.h
 	)
 
 set(SOURCE_FILES 
 	PiguApp.cpp
 	GWindow.cpp
-	specificGLFW/PiguGlfwWindow.cpp
+	piguGLFW/PiguGlfwWindow.cpp
 	)
 
 add_library(Pigu SHARED ${HEADER_FILES} ${SOURCE_FILES})

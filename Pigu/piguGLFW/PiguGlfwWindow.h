@@ -1,11 +1,13 @@
 #pragma once
 
+//IN PIGU FOLDER
+
 #include "../WindowImplement.h"
 #include "GLFW/glfw3.h"
 
 namespace Pigu
 {
-	class PiguGlfwWindow : public WindowImplement 
+	class PiguGlfwWindow : public WindowImplement
 	{
 	public:
 		PiguGlfwWindow();

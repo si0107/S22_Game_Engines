@@ -1,3 +1,6 @@
+//IN PIGU FOLDER
+
+
 #include "pchPigu.h"
 
 #include "PiguGlfwWindow.h"
@@ -8,7 +11,7 @@ namespace Pigu
 {
 	PiguGlfwWindow::PiguGlfwWindow()
 	{
-		if(!glfwInit())
+		if (!glfwInit())
 			PIGU_LOG("ERROR: GLFW failed to initialize!")
 	}
 
@@ -23,7 +26,7 @@ namespace Pigu
 		}
 
 		glfwMakeContextCurrent(mGlfwWindow);
-		
+
 		return true;
 	}
 
