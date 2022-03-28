@@ -1,18 +1,18 @@
 #include "pch.h"
 
-#include "GlfwWindow.h"
+#include "PiguGlfwWindow.h"
 #include "PiguUtil.h"
 
 
 namespace Pigu
 {
-	GlfwWindow::GlfwWindow()
+	PiguGlfwWindow::PiguGlfwWindow()
 	{
 		if(!glfwInit())
 			PIGU_LOG("ERROR: GLFW failed to initialize!")
 	}
 
-	bool GlfwWindow::CreateWindow(int width, int height, const std::string& windowName)
+	bool PiguGlfwWindow::CreateWindow(int width, int height, const std::string& windowName)
 	{
 		mGlfwWindow = glfwCreateWindow(width, height, windowName.c_str(), NULL, NULL);
 
@@ -28,17 +28,17 @@ namespace Pigu
 	}
 
 
-	void GlfwWindow::SwapBuffers()
+	void PiguGlfwWindow::SwapBuffers()
 	{
 		glfwSwapBuffers(mGlfwWindow);
 	}
 
-	void GlfwWindow::CollectEvents()
+	void PiguGlfwWindow::CollectEvents()
 	{
 		glfwPollEvents();
 	}
 
-	int GlfwWindow::GetWidth() const
+	int PiguGlfwWindow::GetWidth() const
 	{
 		int width, height;
 		glfwGetWindowSize(mGlfwWindow, &width, &height);
@@ -46,7 +46,7 @@ namespace Pigu
 		return width;
 	}
 
-	int GlfwWindow::GetHeight() const
+	int PiguGlfwWindow::GetHeight() const
 	{
 		int width, height;
 		glfwGetWindowSize(mGlfwWindow, &width, &height);
@@ -54,7 +54,7 @@ namespace Pigu
 		return height;
 	}
 
-	GlfwWindow::~GlfwWindow()
+	PiguGlfwWindow::~PiguGlfwWindow()
 	{
 		if (mGlfwWindow != nullptr)
 			glfwDestroyWindow(mGlfwWindow);

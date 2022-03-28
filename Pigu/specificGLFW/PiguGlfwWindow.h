@@ -5,16 +5,16 @@
 
 namespace Pigu
 {
-	class GlfwWindow : public WindowImplement 
+	class PiguGlfwWindow : public WindowImplement 
 	{
 	public:
-		GlfwWindow();
+		PiguGlfwWindow();
 		virtual bool CreateWindow(int width, int height, const std::string& windowName) override;
 		virtual void SwapBuffers() override;
 		virtual void CollectEvents() override;
 		virtual int GetWidth() const override;
 		virtual int GetHeight() const override;
-		~GlfwWindow();
+		~PiguGlfwWindow();
 
 	private:
 		GLFWwindow* mGlfwWindow{ nullptr };

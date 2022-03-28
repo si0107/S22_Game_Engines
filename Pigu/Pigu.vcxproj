@@ -158,7 +158,7 @@
     <ClInclude Include="Pigu.h" />
     <ClInclude Include="PiguApp.h" />
     <ClInclude Include="PiguUtil.h" />
-    <ClInclude Include="specificGLFW\GlfwWindow.h" />
+    <ClInclude Include="specificGLFW\PiguGlfwWindow.h" />
     <ClInclude Include="WindowImplement.h" />
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +170,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PiguApp.cpp" />
-    <ClCompile Include="specificGLFW\GlfwWindow.cpp" />
+    <ClCompile Include="specificGLFW\PiguGlfwWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glfw\build\src\glfw.vcxproj">

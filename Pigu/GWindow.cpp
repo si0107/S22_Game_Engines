@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "GWindow.h"
-#include "specificGLFW/GlfwWindow.h"
+#include "specificGLFW/PiguGlfwWindow.h"
 
 namespace Pigu
 {
@@ -44,11 +44,11 @@ namespace Pigu
 	GWindow::GWindow()
 	{
 #ifdef PIGU_WINDOWS
-	mWindow = new GlfwWindow;
+	mWindow = new PiguGlfwWindow;
 #elif defined PIGU_MACOS
-	mWindow = new GlfwWindow;
+	mWindow = new PiguGlfwWindow;
 #elif defined PIGU_LINUX
-	mWindow = new GlfwWindow;
+	mWindow = new PiguGlfwWindow;
 #else
 	#Unsupported_platform
 #endif
