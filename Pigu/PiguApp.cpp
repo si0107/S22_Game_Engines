@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "pchPigu.h"
 
 #include "PiguApp.h"
 #include "GWindow.h"

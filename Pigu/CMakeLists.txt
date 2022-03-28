@@ -21,6 +21,6 @@ add_definitions(-DPIGU_DEBUG)
 include_directories(../glfw/include)
 include_directories(../Pigu)
 
-target_precompile_headers(Pigu PRIVATE pch.h)
+target_precompile_headers(Pigu PRIVATE pchPigu.h)
 
 target_link_libraries(Pigu glfw)

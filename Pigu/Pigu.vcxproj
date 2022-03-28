@@ -124,7 +124,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pchPigu.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)glfw\include;$(SolutionDir)Pigu</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderFile>pchPigu.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)glfw\include;$(SolutionDir)Pigu</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -154,7 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GWindow.h" />
-    <ClInclude Include="pch.h" />
+    <ClInclude Include="pchPigu.h" />
     <ClInclude Include="Pigu.h" />
     <ClInclude Include="PiguApp.h" />
     <ClInclude Include="PiguUtil.h" />
@@ -163,7 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GWindow.cpp" />
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="pchPigu.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -24,7 +24,7 @@
     <ClInclude Include="PiguUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="pchPigu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GWindow.h">
@@ -41,7 +41,7 @@
     <ClCompile Include="PiguApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="pchPigu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GWindow.cpp">

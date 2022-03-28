@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pch.h"
+#include "pchPigu.h"
 
 #ifdef PIGU_WINDOWS
 	#ifdef PIGU_LIB
