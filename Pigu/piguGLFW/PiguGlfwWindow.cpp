@@ -13,6 +13,9 @@ namespace Pigu
 	{
 		if (!glfwInit())
 			PIGU_LOG("ERROR: GLFW failed to initialize!")
+
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			PIGU_LOG("ERROR: GLAD failed to initialize!");
 	}
 
 	bool PiguGlfwWindow::CreateWindow(int width, int height, const std::string& windowName)

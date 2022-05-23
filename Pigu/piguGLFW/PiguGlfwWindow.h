@@ -3,6 +3,7 @@
 //IN PIGU FOLDER
 
 #include "../WindowImplement.h"
+#include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
 namespace Pigu
