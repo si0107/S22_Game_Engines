@@ -120,12 +120,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>PIGU_LIB;PIGU_WINDOWS;PIGU_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PIGU_LIB;PIGU_OPENGL;PIGU_WINDOWS;PIGU_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pchPigu.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)glfw\include;$(SolutionDir)Pigu</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)PiguGlad\include;$(SolutionDir)Pigustbi;$(SolutionDir)glfw\include;$(SolutionDir)Pigu</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,12 +138,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>PIGU_LIB;PIGU_WINDOWS;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PIGU_LIB;PIGU_OPENGL;PIGU_WINDOWS;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pchPigu.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)glfw\include;$(SolutionDir)Pigu</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SolutionDir)PiguGlad\include;$(SolutionDir)Pigustbi;$(SolutionDir)glfw\include;$(SolutionDir)Pigu</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,6 +158,15 @@
     <ClInclude Include="Pigu.h" />
     <ClInclude Include="PiguApp.h" />
     <ClInclude Include="piguGLFW\PiguGlfwWindow.h" />
+    <ClInclude Include="piguOpenGL\PiguOpenGLRenderer.h" />
+    <ClInclude Include="piguOpenGL\PiguOpenGLShader.h" />
+    <ClInclude Include="piguOpenGL\PiguOpenGLSprite.h" />
+    <ClInclude Include="PiguRenderer.h" />
+    <ClInclude Include="PiguRendererImplementation.h" />
+    <ClInclude Include="PiguShader.h" />
+    <ClInclude Include="PiguShaderImplementation.h" />
+    <ClInclude Include="PiguSprite.h" />
+    <ClInclude Include="PiguSpriteImplementation.h" />
     <ClInclude Include="PiguUtil.h" />
     <ClInclude Include="WindowImplement.h" />
   </ItemGroup>
@@ -171,10 +180,22 @@
     </ClCompile>
     <ClCompile Include="PiguApp.cpp" />
     <ClCompile Include="piguGLFW\PiguGlfwWindow.cpp" />
+    <ClCompile Include="piguOpenGL\PiguOpenGLRenderer.cpp" />
+    <ClCompile Include="piguOpenGL\PiguOpenGLShader.cpp" />
+    <ClCompile Include="piguOpenGL\PiguOpenGLSprite.cpp" />
+    <ClCompile Include="PiguRenderer.cpp" />
+    <ClCompile Include="PiguShader.cpp" />
+    <ClCompile Include="PiguSprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glfw\build\src\glfw.vcxproj">
       <Project>{26c70bf6-4a93-3553-b974-6b33eaca84ce}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PiguGlad\PiguGlad.vcxproj">
+      <Project>{d13769b8-3038-4ac9-903b-a0ce275f16cf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Pigustbi\Pigustbi.vcxproj">
+      <Project>{6aecb7c5-a457-4e4e-a301-7477d7da2f27}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

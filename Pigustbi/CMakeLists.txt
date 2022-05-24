@@ -1,0 +1,1 @@
+add_library(Pigustbi STATIC pigu_stb_image.h pigu_stb_image.cpp)

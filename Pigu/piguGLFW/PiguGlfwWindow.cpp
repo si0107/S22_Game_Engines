@@ -3,6 +3,7 @@
 
 #include "pchPigu.h"
 
+#include "glad/glad.h"
 #include "PiguGlfwWindow.h"
 #include "PiguUtil.h"
 
@@ -13,9 +14,6 @@ namespace Pigu
 	{
 		if (!glfwInit())
 			PIGU_LOG("ERROR: GLFW failed to initialize!")
-
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-			PIGU_LOG("ERROR: GLAD failed to initialize!");
 	}
 
 	bool PiguGlfwWindow::CreateWindow(int width, int height, const std::string& windowName)
@@ -29,6 +27,10 @@ namespace Pigu
 		}
 
 		glfwMakeContextCurrent(mGlfwWindow);
+		glfwSwapInterval(1);
+
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			PIGU_LOG("ERROR: GLAD failed to initialize!");
 
 		return true;
 	}
