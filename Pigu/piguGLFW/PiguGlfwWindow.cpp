@@ -27,7 +27,7 @@ namespace Pigu
 		}
 
 		glfwMakeContextCurrent(mGlfwWindow);
-		glfwSwapInterval(1);
+		glfwSwapInterval(1); //enables buffering?
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 			PIGU_LOG("ERROR: GLAD failed to initialize!");
