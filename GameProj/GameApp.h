@@ -29,7 +29,7 @@ private:
 	PiguEntity mCloud{ {img+"cloud1.png"} };
 	PiguEntity mCoin{ {img+"CoinSmall.png"} };
 
-	std::vector<PiguEntity> mEnemies{ {{img+"Enemy.png"}}, {{img+"Enemy.png"}} };
+	std::vector<PiguEntity> mEnemies{ {{img+"Enemy.png"}}, {{img+"Enemy.png"}}, {{img + "Enemy.png"}}, {{img + "Enemy.png"}} };
 	std::vector<PiguEntity> mCollectedCoins{ {{img + "CoinSmall.png"}},
 		{{img+"CoinSmall.png"}}, {{img+"CoinSmall.png"}}, {{img+"CoinSmall.png"}},
 		{{img + "CoinSmall.png"}}, {{img + "CoinSmall.png"}}, {{img + "CoinSmall.png"}},
@@ -39,13 +39,18 @@ private:
 		{{img+"RightBullet.png", img+"LeftBullet.png"}}, 
 		{{img+"RightBullet.png", img+"LeftBullet.png"}}, 
 		{{img+"RightBullet.png", img+"LeftBullet.png"}}, 
-		{{img+"RightBullet.png", img+"LeftBullet.png"}} };
+		{{img+"RightBullet.png", img+"LeftBullet.png"}}, 
+		{{img + "RightBullet.png", img + "LeftBullet.png"}},
+		{{img + "RightBullet.png", img + "LeftBullet.png"}}
+	};
 	std::vector<PiguEntity> mExplosions{ 
 		{{img+"Explode0.png", img+"Explode1.png", img+"Explode2.png", img+"Explode3.png", img+"Explode4.png"}},
+		{{img+"Explode0.png", img+"Explode1.png", img+"Explode2.png", img+"Explode3.png", img+"Explode4.png"}},
+		{{img+"Explode0.png", img+"Explode1.png", img+"Explode2.png", img+"Explode3.png", img+"Explode4.png"}},
 		{{img+"Explode0.png", img+"Explode1.png", img+"Explode2.png", img+"Explode3.png", img+"Explode4.png"}} };
-	std::vector<bool> mBullAvailable{ true, true, true, true };
-	std::vector<bool> isExploding{ false, false };
-	std::vector<int> mExpCount{ -1, -1}; //Exploding stage == 0, 1, 2, 3, 4, 5 (no explode, no enemy)
+	std::vector<bool> mBullAvailable{ true, true, true, true, true, true };
+	std::vector<bool> isExploding{ false, false, false, false };
+	std::vector<int> mExpCount{ -1, -1, -1, -1}; //Exploding stage == 0, 1, 2, 3, 4, 5 (no explode, no enemy)
 
 	PiguEntity mText{ {img + "intro.png", img + "win.png", img + "lose.png"} };
 
@@ -59,7 +64,7 @@ private:
 	int mCoinSpeed{ -4 };
 	int mLeftBullSpeed{ -3 };
 	int mRightBullSpeed{ 3 };
-	std::vector<int> enemySpeed{ -2, -2 };
+	std::vector<int> enemySpeed{ -2, -2, -2, 0 };
 	bool collided = false;
 	int GameState{ 0 }; //0 = intro, 1 = win screen, 2 = loss screen, 3 = game is running
 };

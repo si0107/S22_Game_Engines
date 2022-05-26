@@ -11,14 +11,14 @@ GameProjApp::GameProjApp()
 				if (mHero.GetX() < 0)
 					mHorizontalSpeed = 0;
 				else
-					mHorizontalSpeed = -5;
+					mHorizontalSpeed = -10;
 				mHero.SetActiveImage(1);
 				break;
 			case PIGU_KEY_RIGHT:
 				if (mHero.GetX() > Pigu::GWindow::GetWindow()->GetWidth() - mHero.GetWidth())
 					mHorizontalSpeed = 0;
 				else
-					mHorizontalSpeed = 5;
+					mHorizontalSpeed = 10;
 				mHero.SetActiveImage(0);
 				break;
 			case PIGU_KEY_UP:	//Height of Jump = height of Size of mHero --> later change to enemy + 20
@@ -107,6 +107,14 @@ GameProjApp::GameProjApp()
 	//Horizontal Enemy
 	mEnemies[1].SetX(Pigu::GWindow::GetWindow()->GetWidth() + 10);
 	mEnemies[1].SetY(-10 - mEnemies[1].GetHeight());
+
+	//Diagonal Enemy #1
+	mEnemies[2].SetX(Pigu::GWindow::GetWindow()->GetWidth() + 10);
+	mEnemies[2].SetY(-10 - mEnemies[1].GetHeight());
+
+	//Diagonal Enemy #2
+	mEnemies[3].SetX(Pigu::GWindow::GetWindow()->GetWidth() + 10);
+	mEnemies[3].SetY(-10 - mEnemies[1].GetHeight());
 
 	//Coin
 	mCoin.SetX(Pigu::GWindow::GetWindow()->GetWidth() + 10);
@@ -199,8 +207,71 @@ void GameProjApp::OnUpdate()
 		//Implement Randomness
 		/* initialize random seed: */
 		srand((unsigned)time(NULL));
-		int randYPos = rand() % (mEnemies[1].GetHeight() * 2 + 50) + 0;
+		int randYPos = rand() % (mEnemies[1].GetHeight() * 2 + 50) + mEnemies[1].GetHeight();
 		int randYPosCoin = rand() % (mCoin.GetHeight() * 2 + 50) + 0;
+		int randDiag1x = rand() % 2;
+		int randDiag1y = rand() % (Pigu::GWindow::GetWindow()->GetHeight()-400) + 400;
+		int randDiag2x = rand() % 2;
+		int randDiag2y = rand() % (Pigu::GWindow::GetWindow()->GetHeight()-300) + 300;
+		int randVel = rand() % 3 + 1;
+
+
+		//Adjust movement for enemies ------------------------------------------
+
+		//Diagonal1
+		if (isExploding[2] == false)
+		{
+			int initialX = Pigu::GWindow::GetWindow()->GetWidth() + 10;
+			int initialY = (-10 - mEnemies[1].GetHeight());
+			if (mEnemies[2].GetX() == initialX && mEnemies[2].GetY() == initialY) {
+				if (randDiag1x == 1)
+					mEnemies[2].SetX(0);
+				else
+					mEnemies[2].SetX(Pigu::GWindow::GetWindow()->GetWidth());
+				mEnemies[2].SetY(randDiag1y);
+				enemySpeed[2] = randVel;
+			}
+			else if (mEnemies[2].GetX() >= 0 && mEnemies[2].GetX() < Pigu::GWindow::GetWindow()->GetWidth() &&
+				mEnemies[2].GetY() >= 0 && mEnemies[2].GetX() < Pigu::GWindow::GetWindow()->GetHeight())  //Within the bounds of the screen
+			{
+				//If on Right Above of mHero
+				if (mEnemies[2].GetX() >= mHero.GetX() && mEnemies[2].GetY() >= mHero.GetY())
+				{
+					mEnemies[2].SetX(mEnemies[2].GetX() - enemySpeed[2]);
+					mEnemies[2].SetY(mEnemies[2].GetY() - enemySpeed[2]);
+				}
+				//Left Above of mHero
+				else if (mEnemies[2].GetX() < mHero.GetX() && mEnemies[2].GetY() > mHero.GetY())
+				{
+					mEnemies[2].SetX(mEnemies[2].GetX() + enemySpeed[2]);
+					mEnemies[2].SetY(mEnemies[2].GetY() - enemySpeed[2]);
+				}
+				//Right Side
+				else if (mEnemies[2].GetX() >= mHero.GetX() && mEnemies[2].GetY() < mHero.GetY())
+				{
+					mEnemies[2].SetX(mEnemies[2].GetX() - enemySpeed[2]);
+					mEnemies[2].SetY(mEnemies[2].GetY() - enemySpeed[2]);
+				}
+				//Left Side
+				else if (mEnemies[2].GetX() < mHero.GetX() && mEnemies[2].GetY() <= mHero.GetY())
+				{
+					mEnemies[2].SetX(mEnemies[2].GetX() + enemySpeed[2]);
+					mEnemies[2].SetY(mEnemies[2].GetY() - enemySpeed[2]);
+				}
+			}
+			else
+			{
+				if (randDiag1x == 1)
+					mEnemies[2].SetX(0);
+				else
+					mEnemies[2].SetX(Pigu::GWindow::GetWindow()->GetWidth());
+				mEnemies[2].SetY(randDiag1y);
+				enemySpeed[2] = randVel;
+			}
+		}
+
+	
+
 
 		//Bound (Vert) Enemy
 		if (isExploding[0] == false)
@@ -258,10 +329,14 @@ void GameProjApp::OnUpdate()
 		for (int i = 0; i < mBullAvailable.size(); i++)
 			if (mBullAvailable[i] == false)
 			{
+				bool bullleft = false;
 				if (mBullets[i].GetActiveImage() == 1) //Facing Left
 					mBullets[i].SetX(mBullets[i].GetX() + mLeftBullSpeed);
 				else //Facing Right
+				{
 					mBullets[i].SetX(mBullets[i].GetX() + mRightBullSpeed);
+					bullleft = true;
+				}
 
 				bool bulletCollided = false;
 				for (int j = 0; j < mEnemies.size(); j++) {
@@ -274,13 +349,14 @@ void GameProjApp::OnUpdate()
 							mBullAvailable[i] = true;
 							//mEnemies[j].SetX(-20 - mHero.GetWidth());
 							//mEnemies[j].SetY(-20 - mHero.GetHeight());
+							enemySpeed[j] = 0;
 							isExploding[j] = true;
 							mExpCount[j] = 0;
 							mExplosions[j].SetActiveImage(0);
-							if (mBullets[i].GetActiveImage() == 0) //if bullet facing right
+							if (bullleft) //if bullet facing right
 								mExplosions[j].SetX(mEnemies[j].GetX()); //explosion on left
 							else
-								mExplosions[j].SetX(mEnemies[j].GetX());
+								mExplosions[j].SetX(mEnemies[j].GetX() + mEnemies[j].GetWidth() - 12);
 							mExplosions[j].SetY(mEnemies[j].GetY() + mEnemies[j].GetHeight() / 2);
 						}
 					}
@@ -296,7 +372,7 @@ void GameProjApp::OnUpdate()
 			}
 
 		//Collisions ------------------------------------
-		if (Collide(mHero, mEnemies[0]) || Collide(mHero, mEnemies[1]))
+		if (Collide(mHero, mEnemies[0]) || Collide(mHero, mEnemies[1]) || Collide(mHero, mEnemies[2]))
 		{
 			//exit(0);
 			//Make all elements go off the screeen
@@ -387,6 +463,12 @@ void GameProjApp::OnUpdate()
 						//Resent Vertical Enemy
 						mEnemies[0].SetX(400);
 						mEnemies[0].SetY(400);
+					}
+					else if (i == 2) {
+						//Diagonal
+						mEnemies[2].SetX(Pigu::GWindow::GetWindow()->GetWidth() + 10);
+						mEnemies[2].SetY(-10 - mEnemies[1].GetHeight());
+						enemySpeed[i] = 2;
 					}
 					else {
 						//Horizontal Enemy
