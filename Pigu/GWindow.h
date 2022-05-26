@@ -2,6 +2,7 @@
 
 #include "WindowImplement.h"
 #include "PiguUtil.h"
+#include "PiguEvents.h"
 
 namespace Pigu
 {
@@ -17,6 +18,9 @@ namespace Pigu
 		void CollectEvents();
 		int GetWidth() const;
 		int GetHeight() const;
+
+		void SetKeyPressedCallback(const std::function<void(const KeyPressedPiguEvent&)>& keyPressedCallback);
+		void SetKeyReleasedCallback(const std::function<void(const KeyReleasedPiguEvent&)>& keyReleasedCallback);
 
 	private:
 		inline static GWindow* mInstance{ nullptr };

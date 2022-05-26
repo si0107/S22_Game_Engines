@@ -14,6 +14,8 @@ set(HEADER_FILES
 	piguOpenGL/PiguOpenGLSprite.h
 	piguOpenGL/PiguOpenGLShader.h
 	piguOpenGL/PiguOpenGLRenderer.h
+	PiguEvents.h
+	PiguKeyCodes.h
 	)
 
 set(SOURCE_FILES 
@@ -26,6 +28,7 @@ set(SOURCE_FILES
 	piguOpenGL/PiguOpenGLSprite.cpp
 	piguOpenGL/PiguOpenGLShader.cpp
 	piguOpenGL/PiguOpenGLRenderer.cpp
+	PiguEvents.cpp
 	)
 
 add_library(Pigu SHARED ${HEADER_FILES} ${SOURCE_FILES})
@@ -42,3 +45,7 @@ include_directories(../PiguGlad/include)
 target_precompile_headers(Pigu PRIVATE pchPigu.h)
 
 target_link_libraries(Pigu glfw PiguGlad Pigustbi)
+
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Pigu)
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Debug)
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Release)

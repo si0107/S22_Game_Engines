@@ -8,3 +8,4 @@
 #include <string>
 #include <chrono> //deal with time
 #include <thread>
+#include <functional>

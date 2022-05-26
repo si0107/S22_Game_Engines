@@ -5,6 +5,8 @@
 #include "PiguSprite.h"
 #include "PiguShader.h"
 #include "PiguRenderer.h"
+#include "PiguKeyCodes.h"
+#include "PiguEvents.h"
 
 
 //MACRO for creating a method to run the gameClass we supply it

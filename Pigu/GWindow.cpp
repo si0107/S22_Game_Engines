@@ -20,7 +20,7 @@ namespace Pigu
 
 	bool GWindow::CreateWindow(int width, int height, const std::string& windowName)
 	{
-		return mWindow->CreateWindow(800, 600, "Game Project 22");
+		return mWindow->CreateWindow(width, height, "Game Project 22");
 	}
 
 	void GWindow::SwapBuffers()
@@ -41,6 +41,16 @@ namespace Pigu
 	int GWindow::GetHeight() const
 	{
 		return mWindow->GetHeight();
+	}
+
+	void GWindow::SetKeyPressedCallback(const std::function<void(const KeyPressedPiguEvent&)>& keyPressedCallback)
+	{
+		mWindow->SetKeyPressedCallback(keyPressedCallback);
+	}
+
+	void GWindow::SetKeyReleasedCallback(const std::function<void(const KeyReleasedPiguEvent&)>& keyReleasedCallback)
+	{
+		mWindow->SetKeyReleasedCallback(keyReleasedCallback);
 	}
 
 	GWindow::GWindow()
